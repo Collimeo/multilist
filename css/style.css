@@ -87,7 +87,8 @@ input {
     height: 4rem;
     font-size: 2rem;
     background-color: #c6c6c6;
-    border-radius: 0.5rem; }
+    border-radius: 0.5rem;
+    margin: 0 1rem; }
   .add__input {
     font-size: 3rem;
     width: 80%; }
@@ -107,7 +108,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem; }
+  margin: 1rem 0; }
 
 .hamburger {
   width: 40px;
@@ -119,12 +120,17 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  margin: 2rem; }
+  margin: 2rem 0; }
 
 .newCategory {
   margin: 1rem; }
   .newCategory__btn {
     cursor: pointer; }
+  .newCategory__del {
+    display: inline-block;
+    position: absolute;
+    right: 0.7rem;
+    top: 0.5rem; }
   .newCategory__container {
     padding: 1rem;
     height: 100%;
@@ -174,6 +180,18 @@ h1 {
       height: 15px;
       border-radius: 7.5px;
       margin-left: 0.7rem; }
+
+.popup {
+  z-index: 3; }
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6); }
 
 .washedOut {
   text-decoration: line-through;

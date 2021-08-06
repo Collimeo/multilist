@@ -75,17 +75,19 @@ function addDelButton(className, id) {
 
     del.addEventListener("click", (e) => {
 
-        if(e.target.className.includes("item")) //jesteśmy w item, nie category
-        {
-            let itemArr = JSON.parse(localStorage.getItem(id));
-            itemArr.splice(itemArr.indexOf(e.target.parentNode.textContent), 1);
-            localStorage.setItem(id, JSON.stringify(itemArr))
-            // console.log(e.target.parentNode.textContent)
-        } else {
-            let categories = JSON.parse(localStorage.categories)
-            categories.splice(categories.findIndex(x => x.id === id), 1);
-            localStorage.removeItem(id);
-            localStorage.setItem('categories', JSON.stringify(categories));
+        if(id) {
+            if(e.target.className.includes("category__item")) //jesteśmy w item, nie category
+            {
+                let itemArr = JSON.parse(localStorage.getItem(id));
+                itemArr.splice(itemArr.indexOf(e.target.parentNode.textContent), 1);
+                localStorage.setItem(id, JSON.stringify(itemArr))
+                // console.log(e.target.parentNode.textContent)
+            } else {
+                let categories = JSON.parse(localStorage.categories)
+                categories.splice(categories.findIndex(x => x.id === id), 1);
+                localStorage.removeItem(id);
+                localStorage.setItem('categories', JSON.stringify(categories));
+            }
         }
 
         e.target.parentNode.remove();
@@ -248,7 +250,16 @@ function showNewCategory() {
         categoryAddBtn.textContent = "Add";
         categoryAddBtn.setAttribute("class", "newCategory__add");
     
+        let del = document.createElement("img");
+        del.setAttribute("src", '../media/close.png')
+        del.setAttribute("class", `delBtn newCategory__del`);
+        del.addEventListener('click', () => {
+            hideNewCategory();
+            input.focus();
+        })
+
         categoryContainer.appendChild(newCategoryTitle);
+        newCategory.appendChild(del);
         categoryContainer.appendChild(categoryInput);
         categoryContainer.appendChild($picker);
         categoryContainer.appendChild(categoryAddBtn);
@@ -295,6 +306,7 @@ function addCategory(id, catName, color) {
 
 function hideNewCategory() {
     document.querySelector(".popup").remove();
+    document.querySelector('.overlay').remove();
     document.querySelector(".tinyPickerScript").remove();
 }
 
