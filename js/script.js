@@ -153,7 +153,12 @@ function addItem(value) {
     let del = addDelButton("category__item--remove", Number(selection.slice(3)));
     let item = document.createElement("li");
     item.setAttribute("class", "category__item")
-    item.addEventListener("click", (e) => {
+
+    let span = document.createElement("span");
+    // item.setAttribute("draggable", "true");
+    span.textContent = value;
+
+    span.addEventListener("click", (e) => {
         e.stopPropagation();
         if(e.currentTarget.classList.contains("washedOut")) {
             e.currentTarget.classList.remove("washedOut");
@@ -164,9 +169,7 @@ function addItem(value) {
         } 
     }, false)
 
-    let span = document.createElement("span");
-    // item.setAttribute("draggable", "true");
-    span.textContent = value;
+
 
     if(input.value)
         saveToLS(Number(selection.slice(3)), value);
@@ -265,6 +268,10 @@ function showNewCategory() {
         categoryContainer.appendChild(categoryAddBtn);
         newCategory.appendChild(categoryContainer);
         categoryInput.focus();
+
+        document.querySelector('.overlay').addEventListener('click', () => {
+            hideNewCategory();
+        }, false)
     
         tinyPickerScript.onload = () => {
             let picker = tinycolorpicker($picker);
