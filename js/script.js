@@ -68,7 +68,8 @@ function saveCategoryToLS(id, name, color) {
 //TWORZENIE KARTY KATEGORII
 
 function addDelButton(className, id) {
-    let del = document.createElement("button");
+    let del = document.createElement("img");
+    del.setAttribute("src", '../media/close.png')
     del.setAttribute("class", `delBtn ${className}`);
     // del.textContent = "x";
 
