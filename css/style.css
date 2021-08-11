@@ -49,9 +49,10 @@ input {
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  min-height: 100vh;
   background: lightgray;
-  padding: 2rem; }
+  padding: 2rem;
+  background: linear-gradient(0deg, #D5EAF5, #F5DDDA); }
 
 button {
   background: none;
@@ -117,9 +118,6 @@ h1 {
   cursor: pointer; }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
   margin: 2rem 0; }
 
 .newCategory {
@@ -150,11 +148,11 @@ h1 {
     color: black; }
 
 .category {
-  font-family: "Montserrat", sans-serif;
-  width: 400px;
-  min-height: 100px;
+  font-family: "Poppins", sans-serif;
+  width: 350px;
+  min-height: 150px;
   border-radius: 10px;
-  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
   position: relative;
   margin: 1rem; }
   .category__title {
@@ -200,8 +198,42 @@ h1 {
 .activated {
   box-shadow: 0px 0px 15px 7px rgba(255, 255, 255, 0.75); }
 
+.colorSelectors {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  right: 5%;
+  bottom: 5%; }
+
+.colorSelector {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  cursor: pointer; }
+  .colorSelector__1 {
+    background: linear-gradient(0deg, #D5EAF5, #F5DDDA); }
+  .colorSelector__2 {
+    background: linear-gradient(108deg, #86E3CE, #CCABD8); }
+  .colorSelector__3 {
+    background: linear-gradient(0deg, #101D40, #A5D3D8); }
+
 @media screen and (max-width: 900px) {
   .popup {
     width: 100vw;
     border-radius: 0;
     left: 0; } }
+.grid {
+  max-width: 1200px; }
+
+/* clearfix */
+.grid:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+/* ---- grid-item ---- */
+.grid-item {
+  width: 350px;
+  min-height: 150px;
+  float: left; }

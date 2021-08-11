@@ -118,7 +118,7 @@ function createNewList(id, categoryName, color) {
     let list = document.createElement("ul");
     list.setAttribute("class", `cat${id}__list category__list`);
 
-    listContainer.setAttribute("class", `cat${id} category activated`);
+    listContainer.setAttribute("class", `cat${id} category grid-item activated`);
     // listContainer.setAttribute("style", `background: ${color}`);
     listContainer.style.background = color
     listContainer.style.color =  invert(color)
@@ -183,6 +183,7 @@ addBtn.addEventListener("click", (e) => {
     if (input.value) {
         e.preventDefault();
         addItem(input.value);
+        input.focus();
     } else if (!input.value) {
         alert("enter some txt firts");
     } else if (selection === "nocat") {
@@ -331,7 +332,26 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
+// BG COLOR SWITCH
+
+let colorSelector = document.querySelectorAll('.colorSelector');
+colorSelector.forEach(gradient => {
+    gradient.addEventListener("click", (e) => {
+        body.style.backgroundImage = getComputedStyle(gradient).backgroundImage;
+        colorSelector.forEach(item => {
+            item.classList.remove("activated")
+        })
+        gradient.classList.add("activated")
+    })
+})
+
 //-------------------------------------------------------------
 
+//GRID MASONRY
+
+let masonry = new Masonry('.grid', {
+    itemSelector: '.grid-item',
+    columnWidth: 380
+})
 
 // })();

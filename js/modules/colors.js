@@ -40,3 +40,7 @@ export function brighten(hex, percent) {
     // pad each with zeros and return
     return '#' + padZero(r) + padZero(g) + padZero(b);
 }
+
+export function nextColor(hex) {
+    
+}

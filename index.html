@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping list</title>
+    <title>Multilist</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tinycolorpicker.css" type="text/css" media="screen"/>
+    <script type="module" src="js/masonry.pkgd.min.js"></script>
     <script type="module" href="js/colors.js" defer></script>
     <script type="module" src="js/script.js" defer></script>
 </head>
@@ -15,12 +16,13 @@
 <body>
     <div class="header">
         <h1 lcass="header__title">My list</h1>
-        <div class="hamburger"></div>
+        <!-- <div class="hamburger"></div> -->
+        <div class="newCategory">
+            <p class="newCategory__btn">+ New category</p>
+        </div>
     </div>
 
-    <div class="newCategory">
-        <p class="newCategory__btn">+ New category</p>
-    </div>
+
 
     <div class="add">
         <!-- <label for="item">Item name:</label> -->
@@ -29,8 +31,14 @@
     </div>
 
 
-    <div class="cards">
+    <div class="cards grid">
 
+    </div>
+
+    <div class="colorSelectors">
+        <div class="colorSelector colorSelector__1 activated"></div>
+        <div class="colorSelector colorSelector__2"></div>
+        <div class="colorSelector colorSelector__3"></div>
     </div>
 
 </body>
