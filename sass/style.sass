@@ -168,6 +168,7 @@ h1
     width: 200px
     display: flex
     justify-content: space-between
+    align-items: center
     position: fixed
     right: 5%
     bottom: 5%
@@ -177,6 +178,14 @@ h1
     height: 50px
     border-radius: 25px
     cursor: pointer
+    &__pull
+        width: 5px
+        height: 30px
+        background: black
+        border-top-left-radius: 10px
+        border-bottom-left-radius: 10px
+        display: none
+        cursor: pointer
     &__1
         background: $gradientLight
     &__2
@@ -189,6 +198,15 @@ h1
         width: 100vw
         border-radius: 0
         left: 0
+    .colorSelectors
+        transform: translateX(220px)
+        transition: transform .3s ease-in
+    .colorSelector
+        &__pull
+            display: block
+
+.pulled
+    transform: translateX(0px)
 
 .grid 
     max-width: 1200px

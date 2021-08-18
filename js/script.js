@@ -345,6 +345,16 @@ colorSelector.forEach(gradient => {
     })
 })
 
+let colorSelectorPull = document.querySelector('.colorSelector__pull');
+let colorSelectorContainer = document.querySelector('.colorSelectors');
+colorSelectorPull.addEventListener('click', (e) => {
+    if(colorSelectorContainer.classList.contains('pulled')) 
+        {colorSelectorContainer.classList.remove('pulled');}
+    else
+        {colorSelectorContainer.classList.add('pulled')}
+
+})
+
 //-------------------------------------------------------------
 
 //GRID MASONRY
