@@ -84,20 +84,20 @@ input {
   display: flex;
   justify-content: space-between; }
   .add__btn {
-    width: 20%;
+    width: 25%;
     height: 4rem;
-    font-size: 2rem;
+    font-size: 1.7rem;
     background-color: #c6c6c6;
     border-radius: 0.5rem;
-    margin: 0 1rem; }
+    margin: 0 0.5rem; }
   .add__input {
-    font-size: 3rem;
+    font-size: 1.5rem;
     width: 80%; }
 
 h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 3rem;
   display: inline-block;
   width: auto;
   border: 3px solid rgba(0, 0, 0, 0);
@@ -239,6 +239,22 @@ h1 {
 
   .colorSelector__pull {
     display: block; } }
+@media screen and (max-width: 800px) {
+  body {
+    padding: 0.5rem; }
+
+  .category {
+    margin: 1rem auto; }
+
+  .newCategory {
+    margin: 0; }
+
+  .cards {
+    display: flex;
+    flex-direction: column; } }
+@media screen and (max-width: 600px) {
+  .colorSelectors {
+    right: 7%; } }
 .pulled {
   transform: translateX(0px); }
 
