@@ -65,7 +65,8 @@ function saveCategoryToLS(id, name, color) {
     }
 }
 
-//TWORZENIE KARTY KATEGORII
+
+//CREATE CATEGORY CARD
 
 function addDelButton(className, id) {
     let del = document.createElement("img");
@@ -81,16 +82,18 @@ function addDelButton(className, id) {
                 let itemArr = JSON.parse(localStorage.getItem(id));
                 itemArr.splice(itemArr.indexOf(e.target.parentNode.textContent), 1);
                 localStorage.setItem(id, JSON.stringify(itemArr))
+                decreaseRowSpan();
+                e.target.parentNode.remove();
                 // console.log(e.target.parentNode.textContent)
             } else {
                 let categories = JSON.parse(localStorage.categories)
                 categories.splice(categories.findIndex(x => x.id === id), 1);
                 localStorage.removeItem(id);
                 localStorage.setItem('categories', JSON.stringify(categories));
+                e.target.parentNode.parentNode.remove();
             }
         }
 
-        e.target.parentNode.remove();
         input.focus();
         
     });
@@ -98,7 +101,7 @@ function addDelButton(className, id) {
     return del;
 }
 
-function removeSelection() {
+function deselect() {
     let allCategoryCards = document.querySelectorAll("div.category");
     allCategoryCards.forEach(
         function(catCard) {
@@ -110,6 +113,7 @@ function removeSelection() {
 function createNewList(id, categoryName, color) {
     const cards = document.querySelector(".cards");
     let listContainer = document.createElement("div");
+    let listContent = document.createElement("div");
 
     let categoryTitle = document.createElement("h3");
     categoryTitle.setAttribute("class", "category__title");
@@ -122,13 +126,16 @@ function createNewList(id, categoryName, color) {
     // listContainer.setAttribute("style", `background: ${color}`);
     listContainer.style.background = color
     listContainer.style.color =  invert(color)
+    listContainer.style.gridRow = "span 4"
     listContainer.addEventListener("click", (e) => {
         e.stopPropagation();
         selection = e.currentTarget.classList[0];
-        removeSelection();
+        deselect();
         e.currentTarget.className = e.currentTarget.className.concat(" activated");
         input.focus();
     }, false)
+
+    listContent.setAttribute("class", "grid-content");
 
     let closeList = addDelButton("category__remove", id);
 
@@ -139,9 +146,10 @@ function createNewList(id, categoryName, color) {
         saveCategoryToLS(id, categoryName, color);
     }
 
-    listContainer.appendChild(categoryTitle);
-    listContainer.appendChild(list);
-    listContainer.appendChild(closeList);
+    listContent.appendChild(categoryTitle);
+    listContent.appendChild(list);
+    listContent.appendChild(closeList);
+    listContainer.appendChild(listContent);
     cards.appendChild(listContainer);
 }
 
@@ -169,14 +177,21 @@ function addItem(value) {
         } 
     }, false)
 
-
-
     if(input.value)
         saveToLS(Number(selection.slice(3)), value);
  
+    inceraseRowSpan();
     item.appendChild(span);
     list.appendChild(item);
     input.value = "";
+}
+
+function inceraseRowSpan() {
+    document.querySelector(`.${selection}`).style.gridRow = document.querySelector(`.${selection}`).style.gridRow.replace(/[0-9]+/g , (parseInt(document.querySelector(`.${selection}`).style.gridRow.match(/[0-9]+/g)[0], 10) + 1).toString())
+}
+
+function decreaseRowSpan() {
+    document.querySelector(`.${selection}`).style.gridRow = document.querySelector(`.${selection}`).style.gridRow.replace(/[0-9]+/g , (parseInt(document.querySelector(`.${selection}`).style.gridRow.match(/[0-9]+/g)[0], 10) - 1).toString())
 }
 
 addBtn.addEventListener("click", (e) => {
@@ -308,7 +323,7 @@ function showNewCategory() {
 function addCategory(id, catName, color) {
     newListClass = `cat${id}`;
     selection = newListClass;
-    removeSelection();
+    deselect();
     createNewList(id, catName, color);
 }
 
@@ -357,11 +372,6 @@ colorSelectorPull.addEventListener('click', (e) => {
 
 //-------------------------------------------------------------
 
-//GRID MASONRY
 
-let masonry = new Masonry('.grid', {
-    itemSelector: '.grid-item',
-    columnWidth: 380
-})
 
 // })();
