@@ -234,7 +234,7 @@ function showNewCategory() {
         let categoryInput = document.createElement("input");
         categoryInput.setAttribute("class", "newCategory__input");
         categoryInput.setAttribute("type", "text");
-        categoryInput.setAttribute("maxlength", "30");
+        categoryInput.setAttribute("maxlength", "40");
         categoryInput.placeholder = "enter category name";
     
         //--------- COLOR PICKER
