@@ -79,7 +79,6 @@ function addDelButton(className, id) {
         if(id) {
             if(e.target.className.includes("category__item")) //jesteśmy w item, nie category
             {
-                //console.log(e.target.parentNode.parentNode.classList[0].match(/^[a-z]+[0-9]+/g)[0])
                 let itemArr = JSON.parse(localStorage.getItem(id));
                 itemArr.splice(itemArr.indexOf(e.target.parentNode.textContent), 1);
                 localStorage.setItem(id, JSON.stringify(itemArr))
@@ -126,7 +125,7 @@ function createNewList(id, categoryName, color) {
     // listContainer.setAttribute("style", `background: ${color}`);
     listContainer.style.background = color
     listContainer.style.color =  invert(color)
-    listContainer.style.gridRow = "span 4"
+    listContainer.style.gridRow = `${categoryName.length > 25 ? "span 5" : "span 4"}`
     listContainer.addEventListener("click", (e) => {
         e.stopPropagation();
         selection = e.currentTarget.classList[0];
@@ -235,6 +234,7 @@ function showNewCategory() {
         let categoryInput = document.createElement("input");
         categoryInput.setAttribute("class", "newCategory__input");
         categoryInput.setAttribute("type", "text");
+        categoryInput.setAttribute("maxlength", "30");
         categoryInput.placeholder = "enter category name";
     
         //--------- COLOR PICKER
