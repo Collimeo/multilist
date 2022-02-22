@@ -58,10 +58,11 @@ button {
   background: none;
   border: none;
   cursor: pointer;
-  color: white; }
+  color: white;
+  border-radius: 0.5rem; }
   button:hover {
     color: black;
-    background-color: #e0e0e0; }
+    background-color: #ff3333; }
 
 input {
   background: rgba(255, 255, 255, 0);
@@ -87,9 +88,11 @@ input {
     width: 25%;
     height: 4rem;
     font-size: 1.7rem;
-    background-color: #c6c6c6;
+    background-color: #e60000;
     border-radius: 0.5rem;
     margin: 0 0.5rem; }
+    .add__btn--inactive {
+      background-color: #c6c6c6; }
   .add__input {
     font-size: 1.5rem;
     width: 80%; }
@@ -142,7 +145,10 @@ h1 {
     text-align: center; }
   .newCategory__add {
     font-size: 1.5rem;
-    color: black; }
+    color: white;
+    width: 10rem;
+    height: 3rem;
+    background-color: #e60000; }
 
 .category {
   font-family: "Poppins", sans-serif;
