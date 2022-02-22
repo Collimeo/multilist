@@ -79,12 +79,12 @@ function addDelButton(className, id) {
         if(id) {
             if(e.target.className.includes("category__item")) //jesteśmy w item, nie category
             {
+                //console.log(e.target.parentNode.parentNode.classList[0].match(/^[a-z]+[0-9]+/g)[0])
                 let itemArr = JSON.parse(localStorage.getItem(id));
                 itemArr.splice(itemArr.indexOf(e.target.parentNode.textContent), 1);
                 localStorage.setItem(id, JSON.stringify(itemArr))
-                decreaseRowSpan();
+                decreaseRowSpan(`.${e.target.parentNode.parentNode.classList[0].match(/^[a-z]+[0-9]+/g)[0]}`);
                 e.target.parentNode.remove();
-                // console.log(e.target.parentNode.textContent)
             } else {
                 let categories = JSON.parse(localStorage.categories)
                 categories.splice(categories.findIndex(x => x.id === id), 1);
@@ -190,8 +190,10 @@ function inceraseRowSpan() {
     document.querySelector(`.${selection}`).style.gridRow = document.querySelector(`.${selection}`).style.gridRow.replace(/[0-9]+/g , (parseInt(document.querySelector(`.${selection}`).style.gridRow.match(/[0-9]+/g)[0], 10) + 1).toString())
 }
 
-function decreaseRowSpan() {
-    document.querySelector(`.${selection}`).style.gridRow = document.querySelector(`.${selection}`).style.gridRow.replace(/[0-9]+/g , (parseInt(document.querySelector(`.${selection}`).style.gridRow.match(/[0-9]+/g)[0], 10) - 1).toString())
+function decreaseRowSpan(itemClass) {
+    document.querySelector(itemClass).style.gridRow = document.querySelector(itemClass)
+        .style.gridRow
+        .replace(/[0-9]+/g , (parseInt(document.querySelector(itemClass).style.gridRow.match(/[0-9]+/g)[0], 10) - 1).toString())
 }
 
 addBtn.addEventListener("click", (e) => {
