@@ -3,3 +3,4 @@ An app that allows you to create any list you need. You can add categories here,
 Categories are placed on custom masonry-styled grid. The grid span of category incerases with every item added to the list.
 
 Create category, then select it (newly created category will be selected by default) before adding new elements to the list. 
+Inputs are limited to 30 chars
